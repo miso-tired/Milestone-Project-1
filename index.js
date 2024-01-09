@@ -10,6 +10,10 @@ const changeNodePosition = () => {
 
 }
 
+const changeDirection = (e) => {
+    console.log(e);
+}
+
 const startGame = () => {
     let htmlMarkup = `<div class="node" style="grid-area: ${nodeY} / ${nodeX}"></div>`;
     htmlMarkup += `<div class ="snake" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
@@ -18,3 +22,5 @@ const startGame = () => {
 
 changeNodePosition();
 startGame();
+
+document.addEventListener("keydown", changeDirection);
