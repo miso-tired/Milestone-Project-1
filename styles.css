@@ -46,5 +46,9 @@ body {
 }
 
 .play-board .node {
-    background: white;
+    background: #f49bc8;
+}
+
+.play-board .snake {
+    background: #50b01f;
 }

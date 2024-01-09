@@ -1,7 +1,7 @@
 /* Make Snake */
 const playBoard = document.querySelector('.play-board');
 
-let nodeX = 10, nodeY = 15;
+let nodeX, nodeY;
 let snakeX = 5, snakeY = 10;
 
 const changeNodePosition = () => {
