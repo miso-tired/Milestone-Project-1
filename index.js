@@ -8,7 +8,6 @@ let velocityX = 0, velocityY = 0;
 const changeNodePosition = () => {
     nodeX = Math.floor(Math.random() * 35) + 1;
     nodeY = Math.floor(Math.random() * 35) + 1;
-
 }
 
 const changeDirection = (e) => {
@@ -31,6 +30,10 @@ const changeDirection = (e) => {
 const startGame = () => {
     let htmlMarkup = `<div class="node" style="grid-area: ${nodeY} / ${nodeX}"></div>`;
 
+    if(snakeX === nodeX && snakeY === nodeY) {
+        changeNodePosition();
+    }
+
     snakeX += velocityX;
     snakeY += velocityY;
 
@@ -39,6 +42,6 @@ const startGame = () => {
 }
 
 changeNodePosition();
-startGame();
+setInterval(startGame, 125);
 
 document.addEventListener("keydown", changeDirection);
