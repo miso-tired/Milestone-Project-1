@@ -3,6 +3,7 @@ const playBoard = document.querySelector('.play-board');
 
 let nodeX, nodeY;
 let snakeX = 5, snakeY = 10;
+let snakeBody = [];
 let velocityX = 0, velocityY = 0;
 
 const changeNodePosition = () => {
@@ -32,12 +33,23 @@ const startGame = () => {
 
     if(snakeX === nodeX && snakeY === nodeY) {
         changeNodePosition();
+        snakeBody.push([nodeX, nodeY]);
+        console.log(snakeBody)
     }
+
+    for (let i = snakeBody.length - 1; i > 0; i--) {
+        snakeBody[i] = snakeBody[i - 1];
+    }
+
+    snakeBody[0] = [snakeX, snakeY];
 
     snakeX += velocityX;
     snakeY += velocityY;
 
-    htmlMarkup += `<div class ="snake" style="grid-area: ${snakeY} / ${snakeX}"></div>`;
+    for (let i = 0; i < snakeBody.length; i++) {
+        htmlMarkup += `<div class ="snake" style="grid-area: ${snakeBody[i][1]} / ${snakeBody[i][0]}"></div>`;
+    }
+    
     playBoard.innerHTML = htmlMarkup;
 }
 
